@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+
+{% from "helpers.html" import render_text, render_password, render_checkbox, render_submit %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_content %}
+<section>
+    <div class="row uniform">
+        <div class="6u 12u$">
+            <form method="POST">
+                {{ form.csrf_token }}
+                {{ render_text(form.nickname) }}
+                {{ render_password(form.password) }}
+                {{ render_checkbox(form.remember_me) }}
+                {{ render_submit("Login") }}
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

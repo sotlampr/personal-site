@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>{% block title %}{% endblock %} - sotlampr</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]>
+            <script src="{{ url_for('static', filename='js/ie/html5shiv.js') }}"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+		<!--[if lte IE 9]>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/ie9.css') }}" />
+        <![endif]-->
+		<!--[if lte IE 8]>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/ie8.css') }}" />
+        <![endif]-->
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+					<header id="header" class="alt">
+                        <h1><a href="{{ url_for('main.index') }}">sotlampr</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+					<nav id="menu">
+                        <!-- Menu -->
+						<div class="inner">
+							<ul class="links">
+                                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                                <li><a href="{{ url_for('projects.index') }}">Projects</a></li>
+                                <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+                                <li><a href="{{ url_for('main.index', _anchor='contact') }}">Contact</a></li>
+                                {% if current_user.is_authenticated %}
+                                <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+                                {% endif %}
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+                    {% block banner %}
+                    {% endblock %}
+
+                <!-- Body -->
+                    {% block body %}
+                    <section id="wrapper">
+                        {% block body_header %}{% endblock %}
+                        <!-- Body content -->
+                        <div class="wrapper">
+                            <div class="inner">
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <!-- Message Flashing -->
+                                <section>
+                                    <ul id="flashes" class="alt">
+                                    {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                </section>
+                            {% endif %}
+                            {% endwith %}
+                                {% block body_content %}{% endblock %}
+                            </div>
+                        </div>
+                    </section>
+                    {% endblock %}
+
+				<!-- Footer -->
+                    <section id="footer">
+                        <div id="contact" class="inner">
+                            {% block footer %}{% endblock %}
+
+                            <ul class="contact">
+								<li class="fa-male">
+									Sotiris Lamprinidis<br />
+								</li>
+								<li class="fa-phone">(0030) 693-4909345</li>
+								<li class="fa-envelope"><a href="mailto:sot.lampr@gmail.com">sot.lampr@gmail.com</a></li>
+								<li class="fa-github">
+                                    <a href="https://github.com/sotlampr">
+                                        github.com/sotlampr</a></li>
+							<ul class="copyright">
+								<li>&copy; Sotiris Lamprinidis. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+			<!--[if lte IE 8]>
+                <script src="{{ url_for('static', filename='js/ie/respond.min.js') }}"></script>
+            <![endif]-->
+            <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+	</body>
+</html>

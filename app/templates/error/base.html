@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body_header %}
+<header>
+    <div class="inner">
+        <h3 class="major">Oooops, there was an error</h3>
+        <p>{% block error_msg %}{% endblock %}</p>
+    </div>
+</header>
+{% endblock %}

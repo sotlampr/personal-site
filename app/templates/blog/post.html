@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block pretitle %}{{ post.title }} - {% endblock %}
+
+{% block header_par %}
+<p>author: {{ post.author.nickname|title }}, {{ post.timestamp|timesince }}</p>
+{% if current_user.is_authenticated %}
+<a href="{{ url_for('blog.edit_post', slug=post.slug) }}">Edit</a>
+<a href="{{ url_for('blog.delete_post', slug=post.slug) }}">Delete</a>
+{% endif %}
+{% endblock %}
+
+{% block body_content %}
+    <p>{{ post.body|markdown }}</p>
+{% endblock %}

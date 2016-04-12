@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ head_title }}{% endblock %}
+
+{% block pretitle %}{{ header_title }} - {% endblock %}
+
+{% block header_par %}{% endblock %}
+
+{% block body_content %}
+<section>
+{% for post in posts.items %}
+    <a href="{{ url_for ('blog.show_post', slug=post.slug) }}">
+        <h3>{{ post.title }}</h3><p>by {{ post.author.nickname|title }}, {{ post.timestamp|timesince }}</p>
+    </a>
+{% endfor %}
+</section>
+<section>
+    {% if posts.has_next %}
+    <a href="{{ url_for('blog.archive', page=posts.next_num) }}">
+        <span class="icon fa-chevron-circle-left fa-2x">
+    </a>
+    {% endif %}
+    {% if posts.has_prev %}
+    <a href="{{ url_for('blog.archive', page=posts.prev_num) }}">
+        <span class="icon fa-chevron-circle-right fa-2x">
+    </a>
+    {% endif %}
+</section>
+{% endblock %}

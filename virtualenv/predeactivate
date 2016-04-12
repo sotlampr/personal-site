@@ -1,0 +1,5 @@
+#!/bin/zsh
+# This hook is sourced before this virtualenv is deactivated.
+
+unset FLASK_CONFIG
+unset SECRET_KEY

@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block body_content %}
+{% for post in posts.items %}
+<section>
+    <a href="{{ url_for('blog.show_post', slug=post.slug) }}"><h3 class="major">{{ post.title }}</h3></a>
+    <em>By {{ post.author.nickname|title }} / {{ post.timestamp|timesince }}</em>
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('blog.edit_post', slug=post.slug) }}">Edit</a>
+    {% endif %}
+    <p>{{ post.body|markdown }}</p>
+</section>
+{% endfor %}
+<section>
+    {% if posts.has_next %}
+    <a href="{{ url_for('blog.index', page=posts.next_num) }}">
+        <span class="icon fa-chevron-circle-left fa-2x">
+    </a>
+    {% endif %}
+    {% if posts.has_prev %}
+    <a href="{{ url_for('blog.index', page=posts.prev_num) }}">
+        <span class="icon fa-chevron-circle-right fa-2x">
+    </a>
+    {% endif %}
+</section>
+{% endblock %}

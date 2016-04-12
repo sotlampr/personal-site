@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Welcome!{% endblock %}
+{% block banner %}
+<!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <div class="logo"><span class="icon fa-terminal"></span></div>
+            <h2>Sotiris Lamprinidis</h2>
+            <p>Python Developer</p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+<!-- About -->
+    <section id="about" class="wrapper spotlight style1">
+        <div class="inner">
+            <a href="#contact" class="image">
+                <img src="{{ url_for('static',
+                filename='images/about.png') }}" alt="" /></a>
+            <div class="content">
+                <h2 class="major">About</h2>
+                <p>My name is Sotiris Lamprinidis and I'm a developer
+                    interested in machine learning, data analysis,
+                    natural language processing and a lot of other
+                    stuff. I am exited about learning interesting things
+                    and developing new skills.
+                    I currentry reside in Athens, Greece.</p>
+                <a href="#contact" class="special">Contact me</a>
+            </div>
+        </div>
+    </section>
+
+<!-- Projects -->
+    <section id="projects" class="wrapper alt spotlight style2">
+        <div class="inner">
+            <a href="{{ url_for('projects.index') }}" class="image"><img src="{{ url_for('static',
+            filename='images/projects.png') }}" alt="" /></a>
+            <div class="content">
+                <h2 class="major">Projects</h2>
+                <p>I have developed software for the sake of exploring,
+                    for things I find interesting and for my own use (eat
+                your own dogfood!).</p>
+                <a href="{{ url_for('projects.index') }}" class="special">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+<!-- Blog -->
+    <section id="blog" class="wrapper spotlight style3">
+        <div class="inner">
+            <a href="{{ url_for('blog.index') }}" class="image"><img src="{{ url_for('static',
+            filename='images/blog.png') }}" alt="" /></a>
+            <div class="content">
+                    <h2 class="major">Blog</h2>
+                    <p>I write about my adventures in programming and
+                    share things I find useful or interesting.</p>
+                    <a href="{{ url_for('blog.index') }}" class="special">Learn more</a>
+                </div>
+            </div>
+    </section>
+
+<!-- Four -->
+    <section id="four" class="wrapper alt style1">
+        <div class="inner">
+            <h2 class="major">Latest posts</h2>
+            <section class="features">
+                {% for post in posts %}
+                    <article>
+                        <a href="{{ url_for('blog.show_post',slug=post.slug) }}">
+                            <h3 class="major">{{ post.title }}</h3>
+                            <p>{{ post.summary(30)|markdown  }}</p>
+                        </a>
+                    </article>
+                {% endfor %}
+            <ul class="actions">
+                <li><a href="{{ url_for('blog.index') }}" class="button">Browse All</a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <h2 class="major">Get in touch</h2>
+    <form method="post" action="#">
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" />
+        </div>
+        <div class="field">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="4"></textarea>
+        </div>
+        <ul class="actions">
+            <li><input type="submit" value="Send Message" /></li>
+        </ul>
+    </form>
+{% endblock %}

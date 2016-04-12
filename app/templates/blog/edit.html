@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+
+{% from "helpers.html" import render_text, render_textbox, render_checkbox, render_submit %}
+
+{% block pretitle %}Post editor - {% endblock %}
+
+{% block header_par %}
+{% endblock %}
+
+{% block body_content %}
+<section>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ render_text(form.title) }}
+        {{ render_textbox(form.body, 10) }}
+        {{ render_checkbox(form.is_published) }}
+        {{ render_submit("Save") }}
+    </form>
+</section>
+{% endblock %}
