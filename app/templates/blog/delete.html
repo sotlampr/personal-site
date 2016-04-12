@@ -1,0 +1,19 @@
+{% extends "/blog/base.html" %}
+
+{% from "helpers.html" import render_text, render_textbox, render_checkbox, render_submit %}
+
+{% block title %}Administration{% endblock %}
+
+{% block pretitle %}Delete post - {% endblock %}
+
+{% block header_par %}{% endblock %}
+
+{% block body_content %}
+<section>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ render_text(form.confirm) }}
+        {{ render_submit("Delete") }}
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% macro render_errors(field) %}
+    {% if field.errors %}
+        <ul class=errors>
+            {% for error in field.errors %}
+             <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_text(field) %}
+    {{ render_errors(field) }}
+    <div class="field">
+        <label for="{{ field.id }}">{{ field.label }}</label>
+        {{ field(type='text') }}
+    </div>
+{% endmacro %}
+
+
+{% macro render_password(field) %}
+    {{ render_errors(field) }}
+    <div class="field">
+        <label for="{{ field.id }}">{{ field.label }}</label>
+        {{ field(type='password') }}
+    </div>
+{% endmacro %}
+
+
+{% macro render_textbox(field, rows) %}
+    {{ render_errors(field) }}
+    <div class="field">
+        <label for="{{ field.id }}", class="">{{ field.label }}</label>
+        {{ field(rows=16) }}
+    </div>
+{% endmacro %}
+
+
+{% macro render_checkbox(field) %}
+    <div class="6u$ 12u$(small)">
+        {% if field.data == 'y' %}
+            {{ field(type='checkbox', checked=True) }}
+        {% else %}
+            {{ field(type='checkbox') }}
+        {% endif %}
+        <label for="{{ field.id }}">{{ field.label }}</label>
+    </div>
+{% endmacro %}
+
+
+{% macro render_submit(message) %}
+    <ul class="actions">
+        <li><input name="submit" type="submit" value="{{ message }}" /></li>
+    </ul>
+{% endmacro %}
