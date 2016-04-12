@@ -1,6 +1,6 @@
 ###### Source code of my personal site
 
-*currently accesible at [](http:/site-sotlampr.rhcloud.com)*
+*currently accesible at http:/site-sotlampr.rhcloud.com*
 
 A sample from requirements:
 
