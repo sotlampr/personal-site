@@ -8,7 +8,9 @@
 import imp
 import os
 import sys
-from personal_site import app
+from app import create_app
+
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 
 try:
   virtenv = os.path.join(os.environ.get('OPENSHIFT_PYTHON_DIR','.'), 'virtenv')
