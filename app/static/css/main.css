@@ -1,4 +1,5 @@
 @import url(font-awesome.min.css);
+
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic");
 
 /*
@@ -3324,11 +3325,26 @@
 		}
 
 		.wrapper.style2 {
-			background-color: #353849;
+			background-color: #2e3141;
+			margin: 6.5em 0;
+			position: relative;
 		}
 
+			.wrapper.style2 .image {
+				border-radius: 100%;
+				margin: 0 3em 2em 0;
+				width: 22em;
+				overflow: hidden;
+				-ms-flex: 1;
+			}
+
+				.wrapper.style2 .image img {
+					border-radius: 100%;
+					width: 100%;
+				}
+
 			.wrapper.style2:before, .wrapper.style2:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23353849;' /%3E%3C/svg%3E");
+			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%232e3141;' /%3E%3C/svg%3E");
 			}
 
 		.wrapper.style3 {
@@ -3488,6 +3504,14 @@
 				.wrapper.spotlight:nth-child(2n - 1) .image {
 					margin: 0 0 2em 2em;
 				}
+				.wrapper.style2 .image {
+					margin: 0 2em 2em 0;
+					width: 32em;
+				}
+
+				.wrapper.style2:nth-child(2n - 1) .image {
+					margin: 0 0 2em 2em;
+				}
 
 		}
 
@@ -3530,6 +3554,15 @@
 					margin: 0 0 2em 1.75em;
 				}
 
+				.wrapper.style2 .image {
+					width: 19em;
+					margin: 0 1.75em 2em 0;
+				}
+
+				.wrapper.style2:nth-child(2n - 1) .image {
+					margin: 0 0 2em 1.75em;
+				}
+
 		}
 
 		@media screen and (max-width: 640px) {
@@ -3539,6 +3572,11 @@
 			}
 
 			.wrapper.spotlight .image {
+				margin: 0 0 1em 0 !important;
+				max-width: 85%;
+				width: 12em;
+			}
+			.wrapper.style2 .image {
 				margin: 0 0 1em 0 !important;
 				max-width: 85%;
 				width: 12em;
