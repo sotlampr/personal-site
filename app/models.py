@@ -66,8 +66,10 @@ class Post(db.Model):
 
     @hybrid_method
     def summary(self, n_words):
-        stripped = re.sub(r'[#>*-]', ' ', self.body)
-        return ' '.join(stripped.split()[:n_words]) + '...'
+        # stripped = re.sub(r'[#>*-]', ' ', self.body)
+        # return ' '.join(stripped.split()[:n_words]) + '...'
+        stripped = self.body.split('.')
+        return '. '.join(stripped[:n_words]) + ' ...'
 
 
 @login_manager.user_loader

@@ -69,7 +69,7 @@
                     <article>
                         <a href="{{ url_for('blog.show_post',slug=post.slug) }}">
                             <h3 class="major">{{ post.title }}</h3>
-                            <p>{{ post.summary(30)|markdown  }}</p>
+                            <p>{{ post.summary(2)|markdown  }}</p>
                         </a>
                     </article>
                 {% endfor %}
