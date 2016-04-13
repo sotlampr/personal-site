@@ -1,5 +1,0 @@
-#!/bin/zsh
-# This hook is sourced after this virtualenv is activated.
-
-export FLASK_CONFIG="development"
-export SECRET_KEY="shxau$1w$fuz#k+d2^3t$s2#^w#2+v9h7u8e)gj6o5l4n*-=07"
