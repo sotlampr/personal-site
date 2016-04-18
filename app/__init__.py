@@ -3,6 +3,7 @@ from flask.ext.login import LoginManager
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.migrate import Migrate
 from flaskext.markdown import Markdown
+from markdown.extensions.codehilite import CodeHiliteExtension
 from sqlalchemy_searchable import make_searchable
 
 from config import config
@@ -34,7 +35,8 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
-    Markdown(app)
+    md = Markdown(app)
+    md.register_extension(CodeHiliteExtension)
 
     app.jinja_env.filters['timesince'] = timesince_filter
 
@@ -45,5 +47,3 @@ def init_db():
     db.drop_all()
     db.create_all()
     db.session.commit()
-
-

@@ -22,3 +22,4 @@ validators==0.9
 psycopg2==2.6.1
 flask-markdown==0.3
 markdown==2.6.4
+pygments==2.1.3
