@@ -2,6 +2,7 @@ from flask import Flask
 from flask.ext.login import LoginManager
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.migrate import Migrate
+from flask.ext.mail import Mail
 from flaskext.markdown import Markdown
 from markdown.extensions.codehilite import CodeHiliteExtension
 from sqlalchemy_searchable import make_searchable
@@ -11,6 +12,7 @@ from config import config
 login_manager = LoginManager()
 csrf = CsrfProtect()
 migrate = Migrate()
+mail = Mail()
 
 from app.models import db
 from app.filters import timesince_filter
@@ -35,6 +37,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
+    mail.init_app(app)
     md = Markdown(app)
     md.register_extension(CodeHiliteExtension)
 

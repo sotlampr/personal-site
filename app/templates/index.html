@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% from "helpers.html" import render_text, render_textbox, render_submit %}
+
 {% block title %}Welcome!{% endblock %}
 {% block banner %}
 <!-- Banner -->
@@ -82,21 +85,11 @@
 
 {% block footer %}
     <h2 class="major">Get in touch</h2>
-    <form method="post" action="#">
-        <div class="field">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" />
-        </div>
-        <div class="field">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" />
-        </div>
-        <div class="field">
-            <label for="message">Message</label>
-            <textarea name="message" id="message" rows="4"></textarea>
-        </div>
-        <ul class="actions">
-            <li><input type="submit" value="Send Message" /></li>
-        </ul>
+    <form method="post">
+   	 {{ form.csrf_token }}
+         {{ render_text(form.name) }}
+         {{ render_text(form.email) }}
+         {{ render_textbox(form.message, 10) }}
+         {{ render_submit("Send") }}
     </form>
 {% endblock %}
