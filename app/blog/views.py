@@ -71,7 +71,6 @@ def edit_post(slug):
             post.title = form.title.data
             post.body = form.body.data
             post.is_published = form.is_published.data
-            post.timestamp = datetime.utcnow()
             post.user_id = current_user.get_id()
             db.session.commit()
             flash("Post updated.")
